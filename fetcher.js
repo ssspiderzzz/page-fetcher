@@ -14,7 +14,6 @@ request('http://www.example.com', (error, response, body) => {
   console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
   //console.log('body:\n', body);
   download(body);
-  console.log(getFilesizeInBytes("./tmp/index.html"));
   conn.end();
 });
 
@@ -23,8 +22,7 @@ const download = function(content) {
     if (err) {
       return console.log(err);
     }
-
-    console.log(`Downloaded and saved ${fs.stat.size} bytes to ./temp/index.html`);
+    console.log(`Downloaded and saved ${(getFilesizeInBytes("./tmp/index.html"))} bytes to ./temp/index.html`);
   });
 };
 
